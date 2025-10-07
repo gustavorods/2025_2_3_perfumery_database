@@ -1,2 +1,40 @@
-# 2025_2_3_perfumery_database
-Database project developed for a fictional perfumery, focusing on managing sales and logistics operations. The system organizes sales regions, allocates salespeople and vehicles, and records sales by generating invoices, ensuring control over products, customers, and deliveries.
+# **Business Database**
+
+**Tagline**: Educational SQL project to model and create a perfumery database.
+
+---
+
+## **Description**
+
+An educational project focused on creating a structured perfumery database using SQL.  
+Ideal for learning and practicing database modeling and SQL syntax.
+
+---
+
+## **Installation**
+
+Clone the repository to your local machine:
+```bash
+git clone https://github.com/gustavorods/2025_2_3_perfumery_database.git
+```
+
+---
+
+## **Usage**
+
+Open the `.sql` file in your preferred SQL client.  
+I recommend using **SQL Server Management Studio (SSMS)** for a smoother experience.
+
+Execute the script to create and populate the business database.
+
+---
+
+## **License**
+
+This project is licensed under the **MIT License**.
+
+---
+
+## **Observations**
+
+As this is a school assignment, the file named `instructions` contains important **due dates** and **submission guidelines**. Make sure to check it if you're using this project for academic purposes.
