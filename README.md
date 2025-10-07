@@ -1,4 +1,4 @@
-# **Business Database**
+# **Perfumery Database**
 
 **Tagline**: Educational SQL project to model and create a perfumery database.
 
