@@ -2,7 +2,7 @@ CREATE DATABASE perfumariaBd;
 
 USE perfumariaBd;
 
--- Tabela de Regiões
+-- Tabela de Regiï¿½es
 CREATE TABLE regioes (
     id_regiao INT PRIMARY KEY,
     nome_regiao VARCHAR(100) NOT NULL
@@ -16,7 +16,7 @@ CREATE TABLE pontos_venda (
     FOREIGN KEY (id_regiao) REFERENCES regioes(id_regiao)
 );
 
--- Tabela de Funcionários (Vendedores)
+-- Tabela de Funcionï¿½rios (Vendedores)
 CREATE TABLE funcionarios (
     id_funcionario INT PRIMARY KEY,
     nome_funcionario VARCHAR(100) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE funcionarios (
     FOREIGN KEY (id_regiao) REFERENCES regioes(id_regiao)
 );
 
--- Tabela de Veículos
+-- Tabela de Veï¿½culos
 CREATE TABLE veiculos (
     id_veiculo INT PRIMARY KEY,
     placa VARCHAR(50) NOT NULL, 
@@ -32,7 +32,7 @@ CREATE TABLE veiculos (
     ano_fabricacao VARCHAR(10) NOT NULL
 );
 
--- Relacionamento entre Funcionários e Veículos
+-- Relacionamento entre Funcionï¿½rios e Veï¿½culos
 CREATE TABLE funcionario_veiculo (
      id_veiculo INT NOT NULL,
      id_funcionario INT NOT NULL,
@@ -75,3 +75,100 @@ CREATE TABLE itens_nf (
     FOREIGN KEY (id_nf) REFERENCES notas_fiscais(id_nf),
     FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
 );
+
+
+-- -------------------------------
+-- INSERTS: RegiÃµes
+-- -------------------------------
+INSERT INTO regioes (id_regiao, nome_regiao) VALUES
+(1, 'Zona Norte'),
+(2, 'Zona Sul'),
+(3, 'Zona Leste'),
+(4, 'Zona Oeste'),
+(5, 'Centro');
+
+-- -------------------------------
+-- INSERTS: Pontos de Venda
+-- -------------------------------
+INSERT INTO pontos_venda (id_ponto, descricao, id_regiao) VALUES
+(1, 'Shopping Norte', 1),
+(2, 'Terminal Santana', 1),
+(3, 'Shopping Sul', 2),
+(4, 'Avenida Paulista', 5),
+(5, 'Mercado Leste', 3),
+(6, 'Shopping Oeste', 4);
+
+-- -------------------------------
+-- INSERTS: FuncionÃ¡rios
+-- -------------------------------
+INSERT INTO funcionarios (id_funcionario, nome_funcionario, id_regiao) VALUES
+(1, 'JoÃ£o Silva', 1),
+(2, 'Maria Oliveira', 2),
+(3, 'Carlos Souza', 3),
+(4, 'Ana Paula', 5),
+(5, 'Lucas Lima', 4);
+
+-- -------------------------------
+-- INSERTS: VeÃ­culos
+-- -------------------------------
+INSERT INTO veiculos (id_veiculo, placa, modelo_veiculo, ano_fabricacao) VALUES
+(1, 'ABC-1234', 'Fiat Uno', '2020'),
+(2, 'DEF-5678', 'Ford Ka', '2021'),
+(3, 'GHI-9101', 'Hyundai HB20', '2022'),
+(4, 'JKL-1122', 'Chevrolet Onix', '2023'),
+(5, 'MNO-3344', 'Renault Kwid', '2021');
+
+-- -------------------------------
+-- INSERTS: FuncionÃ¡rio-VeÃ­culo
+-- -------------------------------
+INSERT INTO funcionario_veiculo (id_veiculo, id_funcionario, data_uso) VALUES
+(1, 1, '2025-10-01'),
+(2, 2, '2025-10-02'),
+(3, 3, '2025-10-03'),
+(4, 4, '2025-10-04'),
+(5, 5, '2025-10-05'),
+(2, 1, '2025-10-10'),
+(1, 2, '2025-09-15');
+
+-- -------------------------------
+-- INSERTS: Produtos
+-- -------------------------------
+INSERT INTO produtos (id_produto, nome_produto, quantidade_estoque, preco_unitario) VALUES
+(1, 'Perfume Floral', 50, 120.00),
+(2, 'ColÃ´nia CÃ­trica', 40, 90.00),
+(3, 'Desodorante Masculino', 100, 25.00),
+(4, 'Perfume Amadeirado', 60, 150.00),
+(5, 'Creme Hidratante', 80, 45.00),
+(6, 'Sabonete Natural', 150, 12.00),
+(7, 'Kit Presente', 30, 200.00);
+
+-- -------------------------------
+-- INSERTS: Clientes
+-- -------------------------------
+INSERT INTO clientes (id_cliente, nome_cliente, cpf_cliente) VALUES
+(1, 'Carla Mendes', '123.456.789-00'),
+(2, 'Roberto Dias', '987.654.321-00'),
+(3, 'Fernanda Luz', '456.123.789-00'),
+(4, 'Bruno Castro', '321.654.987-00'),
+(5, 'Isabela Silva', '789.456.123-00');
+
+-- -------------------------------
+-- INSERTS: Notas Fiscais
+-- -------------------------------
+INSERT INTO notas_fiscais (id_nf, id_funcionario, id_cliente, data_emissao) VALUES
+(1, 1, 1, '2025-10-01'),
+(2, 2, 2, '2025-10-02'),
+(3, 3, 3, '2025-10-03'),
+(4, 1, 4, '2025-10-05');
+
+-- -------------------------------
+-- INSERTS: Itens de Notas Fiscais
+-- -------------------------------
+INSERT INTO itens_nf (id_item, id_nf, id_produto, quantidade_vendida) VALUES
+(1, 1, 1, 2),
+(2, 1, 3, 5),
+(3, 2, 2, 3),
+(4, 2, 5, 1),
+(5, 3, 4, 1),
+(6, 4, 1, 1),
+(7, 4, 7, 2);
